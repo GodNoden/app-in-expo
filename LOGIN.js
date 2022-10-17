@@ -8,15 +8,14 @@ export default function LOGIN({navigation}) {
   //rconst navigation = useNavigation();
 
   btnClick = () => {
-    console.log('ghidsnjafinbsjdiakfnjiska');
-    navigation.navigate('pantallab');
+    //navigation.navigate('pantallab');
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         // Typical action to be performed when the document is ready:
         console.log(xhttp.responseText);
-        if (xhttp.responseText === 0) {
+        if (xhttp.responseText == 0) {
           //error alert
         } else {
           let resultado = xhttp.responseText;
@@ -24,10 +23,10 @@ export default function LOGIN({navigation}) {
           console.log(datos[1]);
           console.log(datos[2]);
           pantallab();
-          navigation.navigate('pantallab', {
-            nombre: datos[2],
-            codigo: datos[1],
-          });
+          // navigation.navigate('pantallab', {
+          //   nombre: datos[2],
+          //   codigo: datos[1],
+          // });
         }
       }
     };
@@ -35,11 +34,14 @@ export default function LOGIN({navigation}) {
     xhttp.open(
       'GET',
       'http://148.202.152.33/ws_claseaut.php?codigo=' +
-        '218744678' +
+        codigo +
         '&nip=' +
-        'noe6847927',
+        nip,
       true,
     );
+    // if (condition) {
+      
+    // }
     xhttp.send();
   };
 
@@ -63,7 +65,7 @@ export default function LOGIN({navigation}) {
       <View style={styles.button}>
         <Button
           title="Entrar"
-          onPress={() => navigation.navigate('pantallab')}></Button>
+          onPress={btnClick}></Button>
       </View>
     </View>
   );

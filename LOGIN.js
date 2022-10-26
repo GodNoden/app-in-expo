@@ -34,9 +34,9 @@ export default function LOGIN({navigation}) {
     xhttp.open(
       'GET',
       'http://148.202.152.33/ws_claseaut.php?codigo=' +
-        codigo +
+        '218744678' +
         '&nip=' +
-        nip,
+        'noe6847927',
       true,
     );
     // if (condition) {
@@ -46,7 +46,7 @@ export default function LOGIN({navigation}) {
   };
 
   const pantallab = () => {
-    navigation.navigate('pantallab');
+    navigation.navigate('control');
   };
 
   return (

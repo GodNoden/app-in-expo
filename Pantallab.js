@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
@@ -24,8 +24,8 @@ export default function Pantallab({ navigation, route }) {
     xhttp.send();
   }, []);
 
-  const getItem = (name) => {
-    console.log(users);
+  const getItem = (user) => {
+    navigation.navigate('pantallac', (user.id, user.nombre, user.codigo, user.tarea));
   };
 
   return (
@@ -34,7 +34,10 @@ export default function Pantallab({ navigation, route }) {
         <ScrollView>
           {users.map((user) => {
             return (
-              <View style={{ margin: 10, borderWidth: 0.5, padding: 10 }}>
+              <TouchableOpacity
+                onPress={() => getItem(user)}
+                style={{ margin: 10, borderWidth: 0.5, padding: 10 }}
+              >
                 <Text
                   style={{ color: "black", fontsize: 16, fontWeight: "bold" }}
                 >
@@ -43,7 +46,7 @@ export default function Pantallab({ navigation, route }) {
                 <Text style={{ color: "black" }}>Nombre : {user.nombre} </Text>
                 <Text style={{ color: "black" }}>Tarea : {user.codigo} </Text>
                 <Text style={{ color: "black" }}>Codigo : {user.tarea} </Text>
-              </View>
+              </TouchableOpacity>
             );
           })}
         </ScrollView>
